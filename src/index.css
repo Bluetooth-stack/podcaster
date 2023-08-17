@@ -1,13 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Merienda:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+/* 
+font-family: 'Lobster', cursive;
+font-family: 'Merienda', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Slab', serif;
+*/
+
+:root{
+  --theme: #5cdb95;
+  --pink: #f64C72;
+  --blue: #053861;
+  --fadedgreen: #379683;
+  --lightgreen: #75d49a;
+  --black: #141414;
+  --white: #edf5e1;
+  --grey: #cacaca;
+  --darkgrey: #4b4b4b;
+}
+
+[data-theme="dark"] {
+  --theme:#053861;
+  --pink: #f64C72;
+  --blue: #5cdb95;
+  --fadedgreen: #379683;
+  --lightgreen: #023055e5;
+  --black: #141414;
+  --white: #f0f0f0;
+  --grey: #cacaca;
+  --darkgrey: #4b4b4b;
+}
+
+* {
+  transition: 0.26s ease-in-out;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--theme);
+  color: var(--white);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input{
+  font-family: 'Roboto', sans-serif;
+}
+
+::selection {
+  background-color: #553D67;
+  color: #dbdbdb;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #379683;
+  transition: 0.5s ease-out;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }

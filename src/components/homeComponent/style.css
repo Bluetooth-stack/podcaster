@@ -1,0 +1,94 @@
+.mainContainer{
+    height: 82dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.2rem;
+    gap: 1.2rem;
+}
+
+.info{
+    width: 34%;
+}
+
+.info h2{
+    font-family: 'Roboto Slab', serif;
+    font-size: 3.3rem;
+    color: var(--blue);
+}
+
+.info p{
+    text-align: justify;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.4rem;
+}
+
+.info span{
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.imageContainer img{
+    height: 480px;
+    filter: drop-shadow(0 0 15px white);
+}
+
+.btnContainer{
+    margin-top: 1.8rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.4rem;
+}
+
+@media screen and (max-width: 1030px){
+    .info{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 986px){
+    .info{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 897px){
+    .mainContainer{
+        height: auto;
+        flex-direction: column-reverse;
+        margin-bottom: 1.5rem;
+    }
+    .info{
+        text-align: center;
+    }
+    .btnContainer{
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 778px){
+    .info{
+        width: 84%;
+    }
+}
+@media screen and (max-width: 512px){
+    .imageContainer img{
+        height: 400px;
+    }  
+    .info{
+        width: 98%;
+    } 
+    .info h2{
+        font-size: 2.2rem;
+    }
+    .info p{
+        font-size: 0.8rem;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 363px){
+    .imageContainer img{
+        height: 300px;
+    }     
+}

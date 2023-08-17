@@ -1,0 +1,64 @@
+.inputHolder {
+  position: relative;
+  width: 260px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.inputHolder .bottom{
+  display: inline-block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--blue);
+  position: absolute;
+  bottom: 0.01rem;
+  left: 0;
+  transition: 0.4s ease-out;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.inputHolder input {
+  outline: none;
+  border: 1px solid var(--white);
+  background-color: transparent;
+  font-family: 'Roboto Slab', serif;
+  color: var(--blue);
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.89rem;
+  font-weight: 500;
+  transition: 0.4s ease-out;
+}
+
+.inputHolder input::placeholder {
+  font-family: 'Roboto Slab', serif;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.11rem;
+  transition: 0.2s ease-out;
+}
+
+input:focus::placeholder,
+input:valid::placeholder{
+  visibility: hidden;
+}
+input:focus ~ .bottom{
+  transform: scaleX(1);
+}
+
+@media screen and (max-width: 363px){
+  .inputHolder{
+    width: 210px;
+  }
+  .inputHolder input{
+    font-size: 0.6rem;
+  }
+  .inputHolder input::placeholder {
+    font-size: 0.6rem;
+  }
+  
+}
