@@ -14,6 +14,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from './firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 import PrivateRoute from './components/common/PrivateRoute';
+import StartPodcastPage from './pages/StartPodcastPage';
+import PodcastsPage from './pages/PodcastsPage';
+import PodcastDetailsPage from './pages/PodcastDetailsPage';
+import CreateEpisodePage from './pages/CreateEpisodePage';
+import ForgotPassword from './pages/ForgotPasswordPage';
+import ChangePassword from './pages/ChangePasswordPage';
+import EditProfile from './pages/EditProfileDetails';
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +56,7 @@ function App() {
     return () => {
       authUnsubscribe();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -69,8 +77,15 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/signin' element={<SigninPage />} />
+        <Route path='/forgotPassword' element={<ForgotPassword />} />
         <Route element={<PrivateRoute />}>
           <Route path='/profile' element={<Profile />} />
+          <Route path='/start-podcast' element={<StartPodcastPage />} />
+          <Route path='/podcasts' element={<PodcastsPage />} />
+          <Route path='/podcast/:id' element={<PodcastDetailsPage />} />
+          <Route path='/podcast/:id/create-episode' element={<CreateEpisodePage />} />
+          <Route path='/:id/changePassword' element={<ChangePassword />} />
+          <Route path='/:id/editProfile' element={<EditProfile />} />
         </Route>
       </Routes>
     </div>

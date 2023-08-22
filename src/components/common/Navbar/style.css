@@ -160,6 +160,9 @@
 }
 
 @media screen and (max-width: 496px) {
+  .menuList {
+    width: 65dvw;
+  }
   .logoContainer > h1 {
     font-size: 1.6rem;
   }
@@ -168,6 +171,9 @@
   }
 }
 @media screen and (max-width: 363px) {
+  .menuList {
+    width: 86dvw;
+  }
   .logoContainer > h1 {
     font-size: 1.2rem;
   }

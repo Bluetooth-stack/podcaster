@@ -1,19 +1,19 @@
 import React from 'react'
-import './style.css'
 
-function Input({ type, value, setValue, placeholder, required }) {
+function TextAreaInput({ value, setValue, placeholder, required, rows, cols }) {
     return (
         <section className='inputHolder'>
-            <input className='input'
-                type={type}
+            <textarea className='input'
+                rows={rows}
+                cols={cols}
                 value={value}
                 onChange={(e) => { setValue(e.target.value) }}
                 required={required}
                 placeholder={placeholder}
-            />
+            ></textarea>
             <div className='bottom'></div>
         </section>
     )
 }
 
-export default Input
+export default TextAreaInput

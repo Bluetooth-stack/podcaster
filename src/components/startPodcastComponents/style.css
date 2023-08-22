@@ -1,0 +1,35 @@
+.createFormHolder {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+}
+
+.create-Heading{
+  margin: 1.6rem auto;
+  text-align: center;
+}
+.create-Heading h1{
+  margin: 0.26rem;
+  font-family: 'Lobster', cursive;
+  font-size: 2.1rem;
+}
+.create-Heading p{
+  margin: 0.26rem;
+  font-family: 'Roboto Slab', serif;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 363px) {
+  .createFormHolder {
+    width: 260px;
+  }
+  .create-Heading p {
+    font-size: 0.68rem;
+  }
+  .create-Heading h1 {
+    font-size: 1.5rem;
+  }
+}

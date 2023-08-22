@@ -4,14 +4,17 @@ import Button from '../../components/common/Button';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Link } from 'react-router-dom'
-import { auth, db, gProvider, fbProvider } from '../../firebase';
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, db, gProvider, fbProvider, storage } from '../../firebase';
+import { FacebookAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { doc, setDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../Redux/slices/usersSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Loader from '../../components/common/Loading'
+import Loader from '../../components/common/Loading';
+import defaultDp from '../../Assets/defaultDp.jpg';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import DpInput from '../../components/common/Input/DpInput';
 
 
 function Signup() {
@@ -20,6 +23,8 @@ function Signup() {
     const [pass, setPass] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [previewDp, setpreviewDp] = useState(defaultDp);
+    const [displayPic, setDisplayPic] = useState(null);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -55,12 +60,21 @@ function Signup() {
             const userCred = await createUserWithEmailAndPassword(auth, mail, pass);
             const user = userCred.user;
 
+            const profileImageRef = ref(
+                storage,
+                `userDisplayImage/${user.uid}/${Date.now()}`
+            );
+
+            await uploadBytes(profileImageRef, displayPic);
+
+            const profileImgUrl = await getDownloadURL(profileImageRef);
+
             //seting into firebase db
             await setDoc(doc(db, 'users', user.uid), {
                 name: fullname,
                 email: user.email,
                 uid: user.uid,
-                // profile: fileUrl
+                profile: profileImgUrl
             })
 
             //setting into redux userSlice
@@ -68,7 +82,7 @@ function Signup() {
                 name: fullname,
                 email: user.email,
                 uid: user.uid,
-                // profile: fileUrl
+                profile: profileImgUrl
             }))
 
             setIsLoading(false);
@@ -77,7 +91,7 @@ function Signup() {
         }
         catch (err) {
             setIsLoading(false);
-            toast.error(err?.message.split('/')[1].split(')')[0]);
+            toast.error(err?.message);
         }
     }
 
@@ -87,7 +101,6 @@ function Signup() {
             const result = await signInWithPopup(auth, gProvider)
             // The signed-in user info.
             const user = result.user;
-
             await setDoc(doc(db, 'users', user.uid), {
                 name: user.displayName,
                 email: user.email,
@@ -104,11 +117,13 @@ function Signup() {
 
             setIsLoading(false);
             toast.success('Signed-in!')
-            navigate('/profile')
+            setTimeout(() => {
+                navigate('/profile')
+            }, 200)
         }
         catch (error) {
             setIsLoading(false);
-            const errorMessage = error?.message.split('/')[1].split(')')[0];
+            const errorMessage = error?.message;
             toast.error(errorMessage);
         }
     }
@@ -117,65 +132,76 @@ function Signup() {
         try {
             setIsLoading(true);
             const result = await signInWithPopup(auth, fbProvider)
-
-            // The signed-in user info.
             const user = result.user;
+
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const accessToken = credential.accessToken;
 
             await setDoc(doc(db, 'users', user.uid), {
                 name: user.displayName,
                 email: user.email,
                 uid: user.uid,
-                profile: user.photoURL
+                profile: user.photoURL+`?access_token=${accessToken}`
             });
 
             dispatch(setUser({
                 name: user.displayName,
                 email: user.email,
                 uid: user.uid,
-                profile: user.photoURL
+                profile: user.photoURL+`?access_token=${accessToken}`,
             }))
-
             setIsLoading(false);
             toast.success('Signed-in!')
             navigate('/profile')
         }
         catch (error) {
             setIsLoading(false);
-            const errorMessage = error?.message.split('/')[1].split(')')[0];
+            const errorMessage = error?.message;
             toast.error(errorMessage);
         };
+    }
+
+    function handleChange(file) {
+        if (file) {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.addEventListener("load", function () { setpreviewDp(this.result) });
+            setDisplayPic(file);
+        }
     }
 
     return (
         <>
             {
-                isLoading?
-                <Loader />
-                :
-                <div className='signUpInCard'>
-                    <h1 className='signUpInHeading'>Signup</h1>
+                isLoading ?
+                    <Loader />
+                    :
+                    <div className='signUpInCard'>
+                        <h1 className='signUpInHeading'>Signup</h1>
 
-                    <div>
-                        <Input type={'text'} value={fullname} setValue={setFullname} placeholder={'Full Name'} required={true} />
+                        <div>
+                            <DpInput previewDp={previewDp} handleChange={handleChange} />
 
-                        <Input type={'email'} value={mail} setValue={setMail} placeholder={'example@mail.com'} required={true} />
+                            <Input type={'text'} value={fullname} setValue={setFullname} placeholder={'Full Name'} required={true} />
 
-                        <Input type={'password'} value={pass} setValue={setPass} placeholder={'Password'} required={true} />
+                            <Input type={'email'} value={mail} setValue={setMail} placeholder={'example@mail.com'} required={true} />
 
-                        <Input type={'password'} value={confirmPass} setValue={setConfirmPass} placeholder={'Confirm Password'} required={true} />
+                            <Input type={'password'} value={pass} setValue={setPass} placeholder={'Password'} required={true} />
 
-                        <Button text={'Signup'} onclickHandle={handleSignup} stretched={true} />
+                            <Input type={'password'} value={confirmPass} setValue={setConfirmPass} placeholder={'Confirm Password'} required={true} />
 
-                        <p className='ifAccount'>Already have an account? <Link to={'/signin'} className='toSignin'>Signin</Link></p>
+                            <Button text={'Signup'} onclickHandle={handleSignup} stretched={true} />
 
-                        <div className='loginBtn withGoogle' onClick={handleGoogleAuth}>
-                            <GoogleIcon className='authIcon' /> <span>Signin with Google</span>
-                        </div>
-                        <div className='loginBtn withFb' onClick={handleFbAuth}>
-                            <FacebookIcon className='authIcon' /> <span>Signin with Facebook</span>
+                            <p className='ifAccount'>Already have an account? <Link to={'/signin'} className='toSignin'>Signin</Link></p>
+
+                            <div className='loginBtn withGoogle' onClick={handleGoogleAuth}>
+                                <GoogleIcon className='authIcon' /> <span>Signin with Google</span>
+                            </div>
+                            <div className='loginBtn withFb' onClick={handleFbAuth}>
+                                <FacebookIcon className='authIcon' /> <span>Signin with Facebook</span>
+                            </div>
                         </div>
                     </div>
-                </div>
             }
         </>
     )

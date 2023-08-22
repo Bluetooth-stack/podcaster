@@ -1,0 +1,88 @@
+.episodeDetailsContainer {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  width: 90%;
+  background: linear-gradient(
+    267deg,
+    var(--theme) 0%,
+    rgba(96, 96, 96, 0.342) 100%
+  );
+  border-radius: 0.2rem;
+  margin-bottom: 2.2rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.episodeDetailsContainer img {
+  height: 120px;
+  width: 120px;
+  border-radius: 0.2rem;
+  align-self: center;
+}
+
+.epTitleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.epTitleWrapper h2 {
+  margin: 0.2rem 0;
+  font-family: "Merienda", cursive;
+}
+.epTitleWrapper p {
+  margin: 0.2rem 0;
+  font-family: "Roboto Slab", serif;
+  letter-spacing: 0.014rem;
+}
+
+@media screen and (max-width: 630px) {
+  .episodeDetailsContainer {
+    flex-direction: column;
+    width: 265px;
+    padding: 0.3rem;
+    gap: 0.8rem;
+    background: linear-gradient(
+      0deg,
+      var(--theme) 0%,
+      rgba(96, 96, 96, 0.342) 100%
+    );
+    margin-bottom: 2.5rem;
+  }
+  .episodeDetailsContainer img {
+    width: 100%;
+    height: 210px;
+  }
+  .epTitleWrapper {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .epTitleWrapper h2 {
+    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+  }
+  .epTitleWrapper p {
+    margin-bottom: 0.4rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 298px) {
+  .episodeDetailsContainer {
+    flex-direction: column;
+    width: 250px;
+    padding: 0.3rem;
+    gap: 0.8rem;
+  }
+  .epTitleWrapper h2 {
+    margin-bottom: 0.2rem;
+    font-size: 1.2rem;
+  }
+  .epTitleWrapper p {
+    margin-bottom: 0.2rem;
+    font-size: 0.6rem;
+  }
+}

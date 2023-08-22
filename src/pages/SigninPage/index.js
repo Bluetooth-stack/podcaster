@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../Redux/slices/usersSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Loader from '../../components/common/Loading'
+import Loader from '../../components/common/Loading';
 
 function SigninPage() {
     const [mail, setMail] = useState('');
@@ -46,7 +46,7 @@ function SigninPage() {
         }
         catch (err) {
             setIsLoading(false);
-            toast.error(err?.message.split('/')[1].split(')')[0]);
+            toast.error(err?.message);
         }
     }
 
@@ -67,7 +67,9 @@ function SigninPage() {
                             <Button text={'Signin'} onclickHandle={handleSignin} stretched={true} />
 
                             <p className='ifAccount'>Don't have an account? <Link to={'/signup'} className='toSignin'>Signup</Link></p>
+
                         </div>
+                        <Link className='ifAccount' to={'/forgotPassword'}>Forgot Password?</Link>
                     </div>
             }
         </>

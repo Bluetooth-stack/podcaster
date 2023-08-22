@@ -1,0 +1,106 @@
+.audioPlayerContainer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.4rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.514);
+  padding: 0.8rem 0;
+  z-index: 1000;
+}
+
+.audioPlayerContainer p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.7rem;
+  font-family: "Roboto Slab", serif;
+}
+
+.audioPlayerContainer .nameContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+}
+
+.audioPlayerContainer .nameContainer img {
+  height: 56px;
+  width: 56px;
+  object-fit: cover;
+}
+
+.durationRange {
+  filter: saturate(260) hue-rotate(220deg);
+  width: 100%;
+  min-width: 110px;
+  height: 2px;
+  position: absolute;
+  top: -0.15rem;
+  left: -0.06rem;
+}
+
+.durationRange::-webkit-slider-thumb,
+.volumeRange::-webkit-slider-thumb {
+  cursor: grab;
+}
+
+.volumeRange {
+  position: absolute;
+  right: 0.2rem;
+  top: 2.5rem;
+  filter: saturate(100) hue-rotate(90deg);
+  min-width: 60px;
+  height: 1px;
+  width: 60px;
+  transform: rotate(-90deg);
+}
+
+.volIcon {
+  transform: scale(0.9);
+  position: absolute;
+  right: 3rem;
+  top: 2rem;
+}
+
+.durationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+@media screen and (max-width: 422px) {
+  .audioPlayerContainer .nameContainer {
+    flex-direction: column;
+    gap: 0;
+  }
+  .audioPlayerContainer .nameContainer p {
+    margin-top: 0.4rem;
+  }
+  .volumeRange {
+    right: -0.2rem;
+    top: 2.5rem;
+  }
+  .volIcon {
+    right: 0.9rem;
+    top: 4.8rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .audioPlayerContainer {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .volumeRange {
+    right: -0.2rem;
+    top: 3.8rem;
+  }
+  .volIcon {
+    right: 1rem;
+    top: 6rem;
+  }
+}

@@ -11,7 +11,7 @@ function PrivateRoute() {
         <Loader/>
         :
         (!user || error)?
-        <Navigate to={'/'} replace />
+        <Navigate to={'/signin'} replace />
         :
         <Outlet />
     )

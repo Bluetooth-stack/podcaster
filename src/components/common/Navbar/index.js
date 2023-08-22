@@ -78,7 +78,7 @@ function Navbar() {
                 }
                 <NavLink className='link' to={'/'}>Home</NavLink>
                 <NavLink className='link' to={'/podcasts'}>Podcasts</NavLink>
-                <NavLink className='link' to={'/create'}>Start-podcast</NavLink>
+                <NavLink className='link' to={'/start-podcast'}>Start-podcast</NavLink>
                 <NavLink className='link' to={'/profile'}>Profile</NavLink>
                 {
                     loggedUser?

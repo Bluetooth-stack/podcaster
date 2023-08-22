@@ -1,0 +1,147 @@
+.profilePageHolder {
+  margin: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.userDetailsHolder {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.userDetailsHolder h1 {
+  font-family: "Merienda", cursive;
+  margin: 0.2rem auto;
+}
+
+.userDetailsHolder a {
+  font-size: 0.8rem;
+  font-family: "Roboto Slab", serif;
+  color: var(--white);
+}
+
+.userDetailsHolder .design {
+  position: absolute;
+  width: 102.5%;
+  height: 500px;
+  border-radius: 50%;
+  background: var(--blue);
+  filter: blur(2px);
+  transform: translateY(-25%);
+  box-shadow: 0 0 20px black;
+  z-index: -10;
+}
+
+.userPodcasts {
+  margin: 2rem auto;
+  margin-top: 4.2rem;
+  width: 100%;
+}
+
+.userPodcasts .userPodcastHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Roboto Slab", serif;
+  border-left: 4px solid var(--white);
+}
+
+.userPodcastHeading h2 {
+  margin: 0;
+  margin-left: 0.4rem;
+}
+
+.view {
+  margin: 0 auto;
+  margin-bottom: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 6.8rem;
+  width: 6.8rem;
+  border-radius: 50%;
+}
+
+.view .image {
+  height: 6.8rem;
+  width: 6.8rem;
+  object-fit: cover;
+  object-position: center;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.view span {
+  color: var(--blue);
+  position: absolute;
+  bottom: 0.1rem;
+  right: -0.1rem;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--white);
+}
+
+.editIcon {
+  transform: scale(0.7);
+  color: var(--blue);
+}
+
+@media screen and (max-width: 576px) {
+  .userDetailsHolder h1 {
+    font-size: 1.5rem;
+  }
+  .userDetailsHolder a,
+  .userPodcasts p {
+    font-size: 0.7rem;
+  }
+  .userDetailsHolder .design {
+    transform: translateY(-30%);
+  }
+  .view,
+  .view .image {
+    height: 5.8rem;
+    width: 5.8rem;
+  }
+}
+@media screen and (max-width: 456px) {
+  .userDetailsHolder .design {
+    border-radius: 0;
+  }
+  .userPodcastHeading h2 {
+    font-size: 1.1rem;
+  }
+  .userPodcastHeading span {
+    transform: scale(0.85);
+  }
+  .view,
+  .view .image {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+@media screen and (max-width: 333px) {
+  .userDetailsHolder h1 {
+    font-size: 1.2rem;
+  }
+  .userDetailsHolder a {
+    font-size: 0.6rem;
+  }
+  .view,
+  .view .image {
+    height: 4.6rem;
+    width: 4.6rem;
+  }
+}

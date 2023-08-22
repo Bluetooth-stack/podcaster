@@ -1,6 +1,6 @@
 .signUpInCard {
-  margin: 1rem auto;
-  padding-bottom: 1.6rem;
+  margin: 0 auto;
+  padding-bottom: 0.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +11,7 @@
 
 .signUpInHeading {
   font-family: "Merienda", cursive;
+  margin: 0.3rem auto;
 }
 
 .ifAccount {
@@ -25,17 +26,19 @@
 
 .loginBtn {
   display: flex;
-  /* justify-content: space-evenly; */
+  justify-content: center;
   align-items: center;
   margin: 1rem 0;
   padding: 0.5rem;
   cursor: pointer;
   font-size: 0.8rem;
   font-family: "Roboto Slab", serif;
+  transition: 0.4s ease-out;
 }
 
 .loginBtn span {
   margin: 0 auto;
+  transition: 0.4s ease-out;
 }
 
 .withGoogle {
@@ -44,9 +47,168 @@
 .withFb {
   background-color: rgb(22, 112, 231);
 }
+.withGoogle:hover{
+  box-shadow: 0 0 4px black ;
+}
+.withFb:hover{
+  box-shadow: 0 0 4px black ;
+}
 
 .signinCard {
-  height: 75dvh;
+  height: 65dvh;
+}
+
+.reset-info{
+  font-family: "Roboto Slab", serif;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--white);
+}
+
+.podcastDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 2rem 0;
+}
+
+.podcastDetailsContainer .podcastDetailsTitle {
+  font-size: 2rem;
+  font-family: "Roboto Slab", serif;
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+.detailsContainer {
+  position: relative;
+  align-self: center;
+  width: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.86rem;
+}
+
+.detailsContainer img {
+  height: 200px;
+  width: 200px;
+  border-radius: 0.2rem;
+}
+
+.descWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  font-weight: bold;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+  padding-bottom: 0.86rem;
+}
+
+.thumbnail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    var(--theme) 1%,
+    rgba(96, 96, 96, 0.521) 188%
+  );
+  padding-bottom: 0.86rem;
+}
+
+.detailsDescription {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  margin: 0.8rem 0;
+  line-height: 1.46rem;
+  letter-spacing: 0.1rem;
+}
+
+.episodeHeadingContainer {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.8rem 1.2rem;
+  border-left: 6px solid white;
+}
+
+.episodeHeadingContainer h1 {
+  margin: 0.6rem 0;
+  padding-left: 0.8rem;
+  font-family: "Roboto Slab", serif;
+}
+
+.addEpisodeIcon {
+  transform: scale(1.5);
+  cursor: pointer;
+  margin-right: 0.8rem;
+}
+
+.allEpisodes {
+  align-self: center;
+  margin-bottom: 3.3rem;
+}
+
+@media screen and (max-width: 800px) {
+  .detailsContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .descWrapper {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .detailsContainer img {
+    margin-top: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .addEpisodeIcon {
+    transform: scale(1.3);
+  }
+}
+
+@media screen and (max-width: 438px) {
+  .podcastDetailsContainer .podcastDetailsTitle,
+  .episodeHeadingContainer h1 {
+    font-size: 1.4rem;
+  }
+  .podcastDetailsContainer p {
+    font-size: 0.9rem;
+  }
+  .addEpisodeIcon {
+    transform: scale(1.1);
+  }
+  .allEpisodes {
+    margin-bottom: 4.8rem;
+  }
+  .descWrapper p{
+    font-size: 0.8rem !important;
+  }
 }
 
 @media screen and (max-width: 363px) {
@@ -58,5 +220,19 @@
   }
   .ifAccount {
     font-size: 0.65rem;
+  }
+  .podcastDetailsContainer .podcastDetailsTitle,
+  .episodeHeadingContainer h1 {
+    font-size: 1.1rem;
+  }
+  .podcastDetailsContainer p {
+    font-size: 0.78rem;
+  }
+  .addEpisodeIcon {
+    transform: scale(1.02);
+    margin-right: 0.4rem;
+  }
+  .descWrapper p{
+    font-size: 0.6 !important;
   }
 }

@@ -1,13 +1,13 @@
 .inputHolder {
   position: relative;
-  width: 260px;
+  width: 268px;
   margin-bottom: 1rem;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
 }
 
-.inputHolder .bottom{
+.inputHolder .bottom {
   display: inline-block;
   height: 2px;
   width: 100%;
@@ -20,11 +20,11 @@
   transform: scaleX(0);
 }
 
-.inputHolder input {
+.inputHolder .input {
   outline: none;
   border: 1px solid var(--white);
   background-color: transparent;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   color: var(--blue);
   width: 100%;
   padding: 0.5rem;
@@ -33,8 +33,8 @@
   transition: 0.4s ease-out;
 }
 
-.inputHolder input::placeholder {
-  font-family: 'Roboto Slab', serif;
+.inputHolder .input::placeholder {
+  font-family: "Roboto Slab", serif;
   color: var(--white);
   font-size: 0.8rem;
   font-weight: 300;
@@ -42,23 +42,93 @@
   transition: 0.2s ease-out;
 }
 
-input:focus::placeholder,
-input:valid::placeholder{
+.input:focus::placeholder,
+.input:valid::placeholder {
   visibility: hidden;
 }
-input:focus ~ .bottom{
+.input:focus ~ .bottom {
   transform: scaleX(1);
 }
 
-@media screen and (max-width: 363px){
-  .inputHolder{
+textarea {
+  resize: none;
+}
+
+.fileInputHolder {
+  width: 268px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.labelDesign {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dotted var(--white);
+  background-color: transparent;
+  font-family: "Roboto Slab", serif;
+  font-size: 0.68rem;
+  font-weight: 300;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: 0.4s ease-out;
+}
+
+.editIcon {
+  transform: scale(0.75);
+  color: var(--blue);
+}
+
+.profilePicHolder {
+  margin: 0 auto;
+  margin-bottom: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 4.4rem;
+  width: 4.4rem;
+  border-radius: 50%;
+}
+
+.profilePicHolder .image {
+  height: 4.4rem;
+  width: 4.4rem;
+  object-fit: cover;
+  object-position: center;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profilePicHolder label {
+  color: var(--blue);
+  position: absolute;
+  bottom: 0.1rem;
+  right: -0.1rem;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 363px) {
+  .inputHolder,
+  .fileInputHolder {
     width: 210px;
   }
-  .inputHolder input{
+  .inputHolder .input {
     font-size: 0.6rem;
   }
-  .inputHolder input::placeholder {
+  .inputHolder .input::placeholder {
     font-size: 0.6rem;
   }
-  
 }

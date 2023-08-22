@@ -88,7 +88,7 @@ export default function Hamburger() {
                     </div>
                     <NavLink className='drawerlink' to={'/'}>Home</NavLink>
                     <NavLink className='drawerlink' to={'/podcasts'}>Podcasts</NavLink>
-                    <NavLink className='drawerlink' to={'/create'}>Start-podcast</NavLink>
+                    <NavLink className='drawerlink' to={'/start-podcast'}>Start-podcast</NavLink>
                     <NavLink className='drawerlink' to={'/profile'}>Profile</NavLink>
                     {
                         loggedUser ?

@@ -1,0 +1,96 @@
+.podcastHeading {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.podcastHeading h1 {
+  font-family: "Lobster", cursive;
+  font-size: 2.6rem;
+  margin: 0.2rem auto;
+}
+
+.podcastHeading p {
+  margin: 0.1rem auto;
+  font-family: "Merienda", cursive;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.allCards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  margin: 1.6rem auto;
+  margin-top: 2.6rem;
+  padding: 0 1.2rem;
+}
+
+.SearchPodcast {
+  width: 75%;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SearchPodcast .searchInput {
+  outline: none;
+  border: 1px solid var(--white);
+  border-radius: 1rem;
+  background-color: transparent;
+  font-family: "Roboto Slab", serif;
+  color: var(--blue);
+  width: 100%;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.89rem;
+  font-weight: 400;
+  transition: 0.4s ease-out;
+}
+
+.SearchPodcast .searchInput::placeholder {
+  font-family: "Roboto Slab", serif;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.18rem;
+}
+
+.searchInput:focus {
+  box-shadow: 0 0 6px var(--white);
+}
+
+.notAvailable{
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--white);
+  font-family: "Merienda", cursive;
+  font-weight: bold;
+  margin-top: 4.4rem;
+}
+
+@media screen and (max-width: 363px) {
+  .podcastHeading h1 {
+    font-size: 1.7rem;
+  }
+  .podcastHeading p {
+    font-size: 0.7rem;
+  }
+  .SearchPodcast {
+    width: 82%;
+  }
+  .SearchPodcast .searchInput {
+    padding: 0.3rem 1rem;
+    font-size: 0.78rem;
+    transition: 0.4s ease-out;
+  }
+  .SearchPodcast .searchInput::placeholder {
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.14rem;
+  }
+}
