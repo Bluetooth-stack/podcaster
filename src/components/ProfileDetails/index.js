@@ -4,7 +4,7 @@ import { auth, db } from '../../firebase';
 import defaultDp from '../../Assets/defaultDp.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import { collection, doc, getDoc, onSnapshot, query } from 'firebase/firestore';
+import { collection, onSnapshot, query } from 'firebase/firestore';
 import PodcastCard from '../podcastsPageComponents/PodcastsCard';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -35,9 +35,6 @@ function ProfileDetails({ loggedUser }) {
             unSubscribe();
         }
     }, [])
-
-
-
 
     return (
         <div className='profilePageHolder'>

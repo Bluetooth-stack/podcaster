@@ -5,7 +5,6 @@ import Input from '../../components/common/Input';
 import Button from '../../components/common/Button';
 import DefaultDp from '../../Assets/defaultDp.jpg'
 import DpInput from '../../components/common/Input/DpInput';
-import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
@@ -22,62 +21,44 @@ function EditProfile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (auth.currentUser.providerData[0].providerId === 'facebook.com') {
-      getProfilePic();
-    }
-  }, [])
-
   async function handleConfirm() {
-    try {
+    if(displayPic){
       setIsLoading(true);
-      const user = auth.currentUser;
-      const profileImageRef = ref(
-        storage,
-        `userDisplayImage/${user.uid}/${Date.now()}`
-      );
-
-      await uploadBytes(profileImageRef, displayPic);
-
-      const profileImgUrl = await getDownloadURL(profileImageRef);
-
-      await updateProfile(auth.currentUser, {
-        displayName: userName, photoURL: profileImgUrl
-      })
-      
-      //setting into redux userSlice
-      dispatch(setUser({
-        name: userName,
-        email: user.email,
-        uid: user.uid,
-        profile: profileImgUrl
-      }))
-
-      setIsLoading(false);
-      toast.success('Signed-up!')
-      navigate('/profile')
-    }
-    catch (err) {
-      setIsLoading(false);
-      toast.error(err?.message);
-    }
-  }
-
-  async function getProfilePic() {
-    try {
-      const docRef = doc(db, "users", auth.currentUser.uid);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data().profile);
-        setpreviewDp(docSnap.data().profile)
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
+      try {
+        const user = auth.currentUser;
+        const profileImageRef = ref(
+          storage,
+          `userDisplayImage/${user.uid}/${Date.now()}`
+        );
+  
+        await uploadBytes(profileImageRef, displayPic);
+  
+        const profileImgUrl = await getDownloadURL(profileImageRef);
+  
+        await updateProfile(auth.currentUser, {
+          displayName: userName, photoURL: profileImgUrl
+        })
+        
+        //setting into redux userSlice
+        dispatch(setUser({
+          name: userName,
+          email: user.email,
+          uid: user.uid,
+          profile: profileImgUrl
+        }))
+  
+        setIsLoading(false);
+        toast.success('Edit Successful!')
+        navigate('/profile')
+      }
+      catch (err) {
+        setIsLoading(false);
+        toast.error(err?.message);
       }
     }
-    catch (err) {
-      console.log(err);
+    else{
+      toast.warning('No changes made!');
+      navigate('/profile');
     }
   }
 
