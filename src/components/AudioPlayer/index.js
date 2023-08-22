@@ -12,7 +12,7 @@ function AudioPlayerComponent({ audioFile, picture, playingTitle }) {
     const [currentTime, setCurrentTime] = useState(0)
     const [volume, setVolume] = useState(0.5);
     const [mute, setMute] = useState(false);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const player = useRef();
 
     useEffect(() => {

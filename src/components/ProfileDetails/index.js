@@ -13,7 +13,7 @@ function ProfileDetails({ loggedUser }) {
     const dp = auth.currentUser.photoURL ? auth.currentUser.photoURL : defaultDp;
 
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         const unSubscribe = onSnapshot(
             query(collection(db, 'podcasts')),
@@ -46,7 +46,7 @@ function ProfileDetails({ loggedUser }) {
                 </div >
                 <h1>{loggedUser.name}</h1>
                 {
-                    (auth.currentUser.providerData[0].providerId !== 'facebook.com' && auth.currentUser.providerData[0].providerId === 'google.com') &&
+                    (auth.currentUser.providerData[0].providerId !== 'facebook.com' && auth.currentUser.providerData[0].providerId !== 'google.com') &&
                     <Link to={`/${auth.currentUser.uid}/changePassword`} >Change Password</Link>
                 }
             </div>
