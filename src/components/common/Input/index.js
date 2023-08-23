@@ -6,7 +6,7 @@ function Input({ type, value, setValue, placeholder, required }) {
         <section className='inputHolder'>
             <input className='input'
                 type={type}
-                value={value}
+                value={value?value:''}
                 onChange={(e) => { setValue(e.target.value) }}
                 required={required}
                 placeholder={placeholder}

@@ -5,7 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Link } from 'react-router-dom'
 import { auth, db, gProvider, fbProvider, storage } from '../../firebase';
-import { FacebookAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { FacebookAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { doc, setDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../Redux/slices/usersSlice';
@@ -78,12 +78,14 @@ function Signup() {
                 profile: profileImgUrl
             })
 
+            await updateProfile(user, { photoURL: profileImgUrl });
+
             //setting into redux userSlice
             dispatch(setUser({
                 name: fullname,
                 email: user.email,
                 uid: user.uid,
-                profile: profileImgUrl
+                profilePic: profileImgUrl
             }))
 
             setIsLoading(false);
@@ -142,6 +144,8 @@ function Signup() {
                 uid: user.uid,
                 profile: user.photoURL + `?access_token=${accessToken}`
             });
+
+            await updateProfile(user, { photoURL: user.photoURL + `?access_token=${accessToken}` });
 
             dispatch(setUser({
                 name: user.displayName,

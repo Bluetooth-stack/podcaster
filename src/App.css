@@ -60,13 +60,17 @@
   height: 65dvh;
 }
 .signinCard a {
+  display: block;
   font-size: 0.8rem;
   font-family: "Roboto Slab", serif;
   color: var(--black);
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .delete{
-  margin-top: 5rem;
+  margin-top: 4rem;
   align-self: center;
   font-size: 0.8rem;
   display: flex;

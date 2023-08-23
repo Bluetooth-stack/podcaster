@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import PageTransition from '../../PageTransition';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { deleteDoc, doc } from 'firebase/firestore';
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 
 function EditProfile() {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +43,11 @@ function EditProfile() {
 
         await updateProfile(auth.currentUser, {
           displayName: userName, photoURL: profileImgUrl
-        })
+        });
+
+        const washingtonRef = doc(db, "users", auth.currentUser.uid);
+
+        await updateDoc(washingtonRef, {profile: profileImgUrl});
 
         //setting into redux userSlice
         dispatch(setUser({
