@@ -1,5 +1,5 @@
 .profilePageHolder {
-  margin: 1rem 1.2rem;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@
 
 .userDetailsHolder .design {
   position: absolute;
-  width: 102.9%;
+  width: 100%;
   height: 240px;
   background: var(--theme);
   filter: blur(2px);
@@ -38,10 +38,9 @@
   z-index: -10;
 }
 
-.userPodcasts {
-  margin: 2rem auto;
-  margin-top: 6rem;
-  width: 100%;
+.profilePageHolder .userPodcasts {
+  margin: 6rem 1.2rem 2rem 1.2rem;
+  width: 96%;
 }
 
 .userPodcasts .userPodcastHeading {
@@ -110,9 +109,6 @@
   .userDetailsHolder a,
   .userPodcasts p {
     font-size: 0.7rem;
-  }
-  .userDetailsHolder .design {
-    transform: translateY(-30%);
   }
   .view,
   .view .image {

@@ -60,25 +60,27 @@ function Signup() {
             setIsLoading(true);
             const userCred = await createUserWithEmailAndPassword(auth, mail, pass);
             const user = userCred.user;
+            let profileImgUrl = '';
+            if (displayPic) {
+                const profileImageRef = ref(
+                    storage,
+                    `userDisplayImage/${user.uid}/${Date.now()}`
+                );
 
-            const profileImageRef = ref(
-                storage,
-                `userDisplayImage/${user.uid}/${Date.now()}`
-            );
+                await uploadBytes(profileImageRef, displayPic);
 
-            await uploadBytes(profileImageRef, displayPic);
-
-            const profileImgUrl = await getDownloadURL(profileImageRef);
+                profileImgUrl = await getDownloadURL(profileImageRef);
+            }
 
             //seting into firebase db
             await setDoc(doc(db, 'users', user.uid), {
                 name: fullname,
                 email: user.email,
                 uid: user.uid,
-                profile: profileImgUrl
+                profile: profileImgUrl,
             })
 
-            await updateProfile(user, { photoURL: profileImgUrl });
+            await updateProfile(user, { displayName: fullname.toString(), photoURL: profileImgUrl });
 
             //setting into redux userSlice
             dispatch(setUser({

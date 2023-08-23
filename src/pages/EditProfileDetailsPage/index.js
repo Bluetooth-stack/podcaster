@@ -26,6 +26,7 @@ function EditProfile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  console.log(auth.currentUser);
 
   async function handleConfirm() {
     if (displayPic) {
@@ -45,9 +46,9 @@ function EditProfile() {
           displayName: userName, photoURL: profileImgUrl
         });
 
-        const washingtonRef = doc(db, "users", auth.currentUser.uid);
+        const userRef = doc(db, "users", auth.currentUser.uid);
 
-        await updateDoc(washingtonRef, {profile: profileImgUrl});
+        await updateDoc(userRef, {profile: profileImgUrl});
 
         //setting into redux userSlice
         dispatch(setUser({
@@ -175,13 +176,13 @@ function EditProfile() {
                 <div>
                   <DpInput previewDp={previewDp} handleChange={handleChange} />
 
-                  <Input type={'text'} value={userName} setValue={setUserName} placeholder={'example@mail.com'} required={true} />
+                  <Input type={'text'} value={userName} setValue={setUserName} placeholder={'Full Name'} required={true} />
 
                   <Button text={'Confirm'} onclickHandle={handleConfirm} stretched={true} />
 
                   {
                     (auth.currentUser.providerData[0].providerId !== 'facebook.com' && auth.currentUser.providerData[0].providerId !== 'google.com') &&
-                    <Link to={`/${auth.currentUser.uid}/changePassword`} >Change Password</Link>
+                    <Link className='changePassLink' to={`/${auth.currentUser.uid}/changePassword`} >Change Password</Link>
                   }
 
                   <p className='delete' onClick={googleOrFbCheck}><DeleteIcon /> Delete Account</p>
