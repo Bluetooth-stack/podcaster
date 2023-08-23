@@ -93,12 +93,14 @@ export default function Hamburger() {
                     <NavLink className='drawerlink' to={'/profile'}>Profile</NavLink>
                     {
                         loggedUser ?
-                            <SignButton text={'Signout'} onclickHandle={handleSignout} />
+                            <div className='drawr-btn'>
+                                <SignButton text={'Signout'} onclickHandle={handleSignout} />
+                            </div>
                             :
-                            <>
+                            <div className='drawr-btn'>
                                 <SignButton text={'Signup'} onclickHandle={onclickSignup} />
                                 <SignButton text={'Signin'} outlined={true} onclickHandle={onclickSignin} />
-                            </>
+                            </div>
                     }
                 </div>
 

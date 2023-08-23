@@ -183,7 +183,7 @@ function EditProfile() {
                     <Link className='changePassLink' to={`/${auth.currentUser.uid}/changePassword`} >Change Password</Link>
                   }
 
-                  <p className='delete' onClick={googleOrFbCheck}><DeleteIcon /> Delete Account</p>
+                  <p className='delete' onClick={googleOrFbCheck}><DeleteIcon className='dltIcon' /> Delete Account</p>
                 </div>
             }
           </div>

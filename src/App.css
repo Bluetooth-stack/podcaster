@@ -57,7 +57,7 @@
 }
 
 .signinCard {
-  height: 65dvh;
+  height: 26rem;
 }
 .signinCard a {
   font-size: 0.8rem;
@@ -99,6 +99,9 @@
 .accountDeleteSection .dltIcon{
   cursor: pointer;
   color: rgb(252, 50, 50);
+  padding: 0.2rem;
+  border-radius: 50%;
+  background-color: white;
 }
 
 .reset-info{
@@ -261,6 +264,12 @@
   .descWrapper p{
     font-size: 0.8rem !important;
   }
+  .signinCard a, .changePassLink, .delete{
+    font-size: 0.8rem !important;
+  }
+  .dltIcon{
+    transform: scale(0.8) !important;
+  }
 }
 
 @media screen and (max-width: 363px) {
@@ -286,5 +295,11 @@
   }
   .descWrapper p{
     font-size: 0.6 !important;
+  }
+  .signinCard a, .changePassLink, .delete{
+    font-size: 0.6rem !important;
+  }
+  .dltIcon{
+    transform: scale(0.68) !important;
   }
 }
