@@ -37,6 +37,7 @@ function PodcastDetailsPage() {
             },
             (err) => {
                 console.error('Error fetching episodes data', err);
+                toast.error('Something went wrong!');
             }
         );
 

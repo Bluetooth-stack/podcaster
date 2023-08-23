@@ -11,7 +11,6 @@ function Profile() {
     <PageTransition>
       {
         loggedUser ?
-          // <p>{loggedUser.name}</p>
           <ProfileDetails loggedUser={loggedUser} />
           :
           <Loader />

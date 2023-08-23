@@ -5,6 +5,8 @@ import { collection, onSnapshot, query } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { setPodcasts } from '../../Redux/slices/podcastsSlice'
 import PodcastCard from './PodcastsCard';
+import {toast} from 'react-toastify'
+
 function PodcastMain() {
     const [search, setSearch] = useState('');
 
@@ -23,6 +25,7 @@ function PodcastMain() {
             },
             (error) => {
                 console.log('Error fetching podcasts', error);
+                toast.error('Something went wrong!')
             }
         );
 

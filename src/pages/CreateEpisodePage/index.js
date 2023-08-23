@@ -65,7 +65,6 @@ function CreateEpisodePage() {
 
 
     function audioHandleFunc(file) {
-        console.log(file);
         setPodcastAudio(file)
     }
 

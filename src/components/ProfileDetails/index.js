@@ -7,6 +7,7 @@ import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import PodcastCard from '../podcastsPageComponents/PodcastsCard';
 import EditIcon from '@mui/icons-material/Edit';
+import { toast } from 'react-toastify';
 
 function ProfileDetails({ loggedUser }) {
     const [podcasts, setPodcasts] = useState([]);
@@ -28,6 +29,7 @@ function ProfileDetails({ loggedUser }) {
             },
             (error) => {
                 console.log('Error fetching podcasts', error);
+                toast.error('Something went wrong!')
             }
         );
 

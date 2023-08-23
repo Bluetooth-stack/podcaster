@@ -26,8 +26,6 @@ function EditProfile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log(auth.currentUser);
-
   async function handleConfirm() {
     if (displayPic) {
       setIsLoading(true);
