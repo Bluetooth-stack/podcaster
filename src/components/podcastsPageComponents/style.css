@@ -10,13 +10,14 @@
   font-family: "Lobster", cursive;
   font-size: 2.6rem;
   margin: 0.2rem auto;
+  color: var(--blue);
 }
 
 .podcastHeading p {
   margin: 0.1rem auto;
   font-family: "Merienda", cursive;
   font-weight: bold;
-  color: var(--blue);
+  color: var(--black);
 }
 
 .allCards {
@@ -40,7 +41,7 @@
 
 .SearchPodcast .searchInput {
   outline: none;
-  border: 1px solid var(--white);
+  border: 1px solid var(--black);
   border-radius: 1rem;
   background-color: transparent;
   font-family: "Roboto Slab", serif;
@@ -54,20 +55,20 @@
 
 .SearchPodcast .searchInput::placeholder {
   font-family: "Roboto Slab", serif;
-  color: var(--white);
+  color: var(--grey);
   font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.18rem;
 }
 
 .searchInput:focus {
-  box-shadow: 0 0 6px var(--white);
+  box-shadow: 0 0 6px var(--black);
 }
 
 .notAvailable{
   text-align: center;
   font-size: 0.9rem;
-  color: var(--white);
+  color: var(--black);
   font-family: "Merienda", cursive;
   font-weight: bold;
   margin-top: 4.4rem;

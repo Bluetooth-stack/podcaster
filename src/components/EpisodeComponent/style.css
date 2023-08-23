@@ -31,11 +31,13 @@
 .epTitleWrapper h2 {
   margin: 0.2rem 0;
   font-family: "Merienda", cursive;
+  color: var(--blue);
 }
 .epTitleWrapper p {
   margin: 0.2rem 0;
   font-family: "Roboto Slab", serif;
   letter-spacing: 0.014rem;
+  color: var(--black);
 }
 
 @media screen and (max-width: 630px) {

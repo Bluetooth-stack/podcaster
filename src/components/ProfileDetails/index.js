@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.css'
 import { auth, db } from '../../firebase';
 import defaultDp from '../../Assets/defaultDp.jpg';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import PodcastCard from '../podcastsPageComponents/PodcastsCard';
@@ -45,10 +45,6 @@ function ProfileDetails({ loggedUser }) {
                     <span onClick={() => { navigate(`/${auth.currentUser.uid}/editProfile`) }}><EditIcon className='editIcon' /></span>
                 </div >
                 <h1>{loggedUser.name}</h1>
-                {
-                    (auth.currentUser.providerData[0].providerId !== 'facebook.com' && auth.currentUser.providerData[0].providerId !== 'google.com') &&
-                    <Link to={`/${auth.currentUser.uid}/changePassword`} >Change Password</Link>
-                }
             </div>
 
             <div className='userPodcasts'>

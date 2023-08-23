@@ -8,6 +8,7 @@ import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { clearUser } from '../../Redux/slices/usersSlice';
+import PageTransition from '../../PageTransition';
 
 function ChangePassword() {
     const [currentpass, setCurrentPass] = useState('');
@@ -55,7 +56,7 @@ function ChangePassword() {
     }
 
     return (
-        <>
+        <PageTransition>
             {
                 isLoading ?
                     <Loader />
@@ -75,7 +76,7 @@ function ChangePassword() {
                         </div>
                     </div>
             }
-        </>
+        </PageTransition>
     )
 }
 

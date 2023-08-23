@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import EpisodeDetails from '../../components/EpisodeComponent';
 import AudioPlayer from '../../components/AudioPlayer';
+import PageTransition from '../../PageTransition';
 
 function PodcastDetailsPage() {
     const [podcastDetails, setPodcastDetails] = useState(null);
@@ -21,7 +22,7 @@ function PodcastDetailsPage() {
         if (id) {
             getPodcastData()
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
     useEffect(() => {
@@ -75,56 +76,58 @@ function PodcastDetailsPage() {
     }
 
     return (
-        <div className='podcastDetailsContainer'>
-            {
-                podcastDetails &&
-                <>
-                    <div className='detailsContainer' >
-                        <div className='thumbnail'
-                            style={{ backgroundImage: `url(${podcastDetails.bannerImage})` }}>
+        <PageTransition>
+            <div className='podcastDetailsContainer'>
+                {
+                    podcastDetails &&
+                    <>
+                        <div className='detailsContainer' >
+                            <div className='thumbnail'
+                                style={{ backgroundImage: `url(${podcastDetails.bannerImage})` }}>
+                            </div>
+
+                            <img src={podcastDetails.displayImage} alt='DisplayImage' />
+
+                            <div className='descWrapper'>
+                                <h1 className='podcastDetailsTitle'>{podcastDetails.title}</h1>
+                                <p style={{ fontFamily: 'Roboto Slab', fontSize: '1rem', letterSpacing: '0.12rem', opacity: '0.8', fontWeight: '400', margin: '0.2rem 0 0.5rem 0' }}>
+                                    By - {createdBy}</p>
+                                <p className='detailsDescription'>{podcastDetails.description}</p>
+                            </div>
                         </div>
 
-                        <img src={podcastDetails.displayImage} alt='DisplayImage' />
-
-                        <div className='descWrapper'>
-                            <h1 className='podcastDetailsTitle'>{podcastDetails.title}</h1>
-                            <p style={{ fontFamily: 'Roboto Slab', fontSize: '1rem', letterSpacing: '0.12rem', opacity: '0.8', fontWeight: '400', margin: '0.2rem 0 0.5rem 0' }}>
-                                By - {createdBy}</p>
-                            <p className='detailsDescription'>{podcastDetails.description}</p>
+                        <div className='episodeHeadingContainer'>
+                            <h1>Episodes</h1>
+                            {
+                                (podcastDetails.createdBy === auth.currentUser.uid)
+                                &&
+                                <span title='Create an Episode' onClick={() => { navigate(`/podcast/${id}/create-episode`) }} >
+                                    <LibraryAddIcon className="addEpisodeIcon" />
+                                </span>
+                            }
                         </div>
-                    </div>
 
-                    <div className='episodeHeadingContainer'>
-                        <h1>Episodes</h1>
-                        {
-                            (podcastDetails.createdBy === auth.currentUser.uid)
-                            &&
-                            <span title='Create an Episode' onClick={() => { navigate(`/podcast/${id}/create-episode`) }} >
-                                <LibraryAddIcon className="addEpisodeIcon" />
-                            </span>
-                        }
-                    </div>
-
-                    {episodes.length ?
-                        <div className='allEpisodes'>
-                            {episodes.map((episode, indx) => (
-                                <EpisodeDetails
-                                    key={indx}
-                                    image={podcastDetails.displayImage} title={episode.title}
-                                    desc={episode.description} audioFile={episode.audioFile}
-                                    onClickHandle={(file, title) => { setFile(file); setPlayingEpTitle(title) }}
-                                />
-                            ))}
-                        </div>
-                        :
-                        <p style={{ fontFamily: 'Roboto Slab', alignSelf: 'center' }}>No Episodes Available!</p>}
-                </>
-            }
-            {
-                file &&
-                <AudioPlayer audioFile={file} picture={podcastDetails?.displayImage} playingTitle={playingEpTitle} />
-            }
-        </div>
+                        {episodes.length ?
+                            <div className='allEpisodes'>
+                                {episodes.map((episode, indx) => (
+                                    <EpisodeDetails
+                                        key={indx}
+                                        image={podcastDetails.displayImage} title={episode.title}
+                                        desc={episode.description} audioFile={episode.audioFile}
+                                        onClickHandle={(file, title) => { setFile(file); setPlayingEpTitle(title) }}
+                                    />
+                                ))}
+                            </div>
+                            :
+                            <p style={{ fontFamily: 'Roboto Slab', alignSelf: 'center' }}>No Episodes Available!</p>}
+                    </>
+                }
+                {
+                    file &&
+                    <AudioPlayer audioFile={file} picture={podcastDetails?.displayImage} playingTitle={playingEpTitle} />
+                }
+            </div>
+        </PageTransition>
     )
 }
 

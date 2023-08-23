@@ -30,6 +30,7 @@
   transform: scale(1.15);
   transition: 0.5s ease-in-out;
   padding: 0.1rem;
+  color: var(--blue);
 }
 
 .logoContainer > h1:hover .logoIcon {
@@ -44,6 +45,7 @@
 }
 
 .linkContainer .link {
+  position: relative;
   text-decoration: none;
   font-family: "Merienda", cursive;
   color: var(--blue);
@@ -51,22 +53,44 @@
   transition: 0.4s ease-out;
 }
 
-.linkContainer .link:hover {
-  color: white;
-  text-shadow: 0 0 4px white;
-  transform: translateY(-4px);
+.linkContainer .link::before{
+  position: absolute;
+  bottom: -0.25rem;
+  content: '';
+  height: 2px;
+  width: 100%;
+  background-color: var(--blue);
+  border-radius: 0.2rem;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s ease-out;
 }
 
-.linkContainer .link.active {
-  color: white;
-  text-shadow: 0 0 4px white;
-  transform: translateY(-4px);
+.linkContainer .link:hover::before {
+  color: var(--blue);
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.linkContainer .link.active{
+  position: relative;
+}
+
+.linkContainer .link.active::after{
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  content: '';
+  height: 2px;
+  width: 100%;
+  background-color: var(--blue);
+  border-radius: 0.2rem;
 }
 
 .sun,
 .moon {
   cursor: pointer;
-  color: var(--white);
+  color: var(--themepicker);
 }
 
 .burgerMenu {
@@ -114,7 +138,7 @@
     padding-top: 4rem;
     height: 100dvh;
     width: 50dvw;
-    background: var(--lightgreen);
+    background: var(--light);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -146,11 +170,6 @@
     color: white;
     pointer-events: none;
   }
-
-  /* .btn:hover,
-  .outlineBtn:hover {
-    padding: 0.2rem 1.8rem;
-  } */
 
   .themeSwitch {
     position: absolute;

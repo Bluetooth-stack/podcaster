@@ -1,5 +1,4 @@
 .podcastCard {
-  /* margin: 1rem auto; */
   padding: 0.25rem;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,6 @@
 }
 
 .podcastCardLink {
-  color: var(--white);
   text-decoration: none;
 }
 
@@ -27,6 +25,8 @@
 }
 
 .podcastCard p {
+  color: var(--black);
+  font-weight: 500;
   width: 226px;
   margin: 0;
   margin-top: 0.2rem;
@@ -40,5 +40,5 @@
 
 .podcastCard:hover{
     opacity: 1;
-    transform: scale(1.01) rotate(1deg);
+    transform: rotate(1deg);
 }

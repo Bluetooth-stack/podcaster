@@ -6,16 +6,19 @@
   justify-content: flex-start;
   gap: 1.4rem;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.514);
+  background-color: rgba(0, 0, 0, 0.356);
   padding: 0.8rem 0;
   z-index: 1000;
+  color: var(--black);
 }
 
 .audioPlayerContainer p {
   margin: 0;
   padding: 0;
   font-size: 0.7rem;
+  font-weight: 700;
   font-family: "Roboto Slab", serif;
+  color: var(--black);
 }
 
 .audioPlayerContainer .nameContainer {
@@ -63,6 +66,7 @@
   position: absolute;
   right: 3rem;
   top: 2rem;
+  color: var(--black);
 }
 
 .durationContainer {
@@ -70,6 +74,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
+  color: var(--black);
 }
 
 @media screen and (max-width: 422px) {

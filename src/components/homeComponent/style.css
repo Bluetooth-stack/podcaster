@@ -23,6 +23,7 @@
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
     line-height: 1.4rem;
+    color: var(--black);
 }
 
 .info span{
@@ -32,7 +33,7 @@
 
 .imageContainer img{
     height: 480px;
-    filter: drop-shadow(0 0 15px white);
+    filter: drop-shadow(0 0 15px var(--blue));
 }
 
 .btnContainer{

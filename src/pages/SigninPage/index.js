@@ -10,6 +10,7 @@ import { setUser } from '../../Redux/slices/usersSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loader from '../../components/common/Loading';
+import PageTransition from '../../PageTransition';
 
 function SigninPage() {
     const [mail, setMail] = useState('');
@@ -51,7 +52,7 @@ function SigninPage() {
     }
 
     return (
-        <>
+        <PageTransition>
             {
                 isLoading ?
                     <Loader />
@@ -72,7 +73,7 @@ function SigninPage() {
                         <Link className='ifAccount' to={'/forgotPassword'}>Forgot Password?</Link>
                     </div>
             }
-        </>
+        </PageTransition>
     )
 }
 

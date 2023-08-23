@@ -5,6 +5,9 @@
   align-items: center;
   justify-content: center;
   width: 320px;
+  padding: 1.4rem 0;
+  border-radius: 0.2rem;
+  background-color: #0005204d;
 }
 
 .create-Heading{
@@ -15,11 +18,13 @@
   margin: 0.26rem;
   font-family: 'Lobster', cursive;
   font-size: 2.1rem;
+  color: var(--blue);
 }
 .create-Heading p{
   margin: 0.26rem;
   font-family: 'Roboto Slab', serif;
   font-size: 0.9rem;
+  color: var(--black);
 }
 
 @media screen and (max-width: 363px) {

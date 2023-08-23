@@ -1,11 +1,12 @@
 import React from 'react'
 import Main from '../../components/homeComponent';
+import PageTransition from '../../PageTransition';
 
 function Home() {
   return (
-    <div>
+    <PageTransition>
       <Main />
-    </div>
+    </PageTransition>
   )
 }
 

@@ -56,6 +56,7 @@ function Navbar() {
             dispatch(clearUser());
             toast.success('Signed-out!')
             navigate('/')
+            navigate(0)
         }
         catch (err) {
             toast.error('Something Went Wrong!')

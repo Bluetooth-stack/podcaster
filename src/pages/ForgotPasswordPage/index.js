@@ -6,6 +6,7 @@ import { auth } from '../../firebase';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import PageTransition from '../../PageTransition';
 
 function ForgotPassword() {
     const [mail, setMail] = useState('');
@@ -27,7 +28,7 @@ function ForgotPassword() {
     }
 
     return (
-        <>
+        <PageTransition>
             {
                 isLoading ?
                     <Loader />
@@ -43,7 +44,7 @@ function ForgotPassword() {
                         <Link className='ifAccount' to={'/signin'} style={{marginTop: '1rem'}}>Back to Signin</Link>
                     </div>
             }
-        </>
+        </PageTransition>
     )
 }
 

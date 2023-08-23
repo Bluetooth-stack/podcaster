@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/HomePage';
 import Navbar from './components/common/Navbar';
 import { ToastContainer } from 'react-toastify';
@@ -20,10 +20,13 @@ import PodcastDetailsPage from './pages/PodcastDetailsPage';
 import CreateEpisodePage from './pages/CreateEpisodePage';
 import ForgotPassword from './pages/ForgotPasswordPage';
 import ChangePassword from './pages/ChangePasswordPage';
-import EditProfile from './pages/EditProfileDetails';
+import EditProfile from './pages/EditProfileDetailsPage';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const dispatch = useDispatch();
+
+  const location = useLocation();
 
   useEffect(() => {
     const authUnsubscribe = onAuthStateChanged(auth, (user) => {
@@ -56,7 +59,7 @@ function App() {
     return () => {
       authUnsubscribe();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -73,21 +76,23 @@ function App() {
         theme="colored"
       />
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/signin' element={<SigninPage />} />
-        <Route path='/forgotPassword' element={<ForgotPassword />} />
-        <Route element={<PrivateRoute />}>
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/start-podcast' element={<StartPodcastPage />} />
-          <Route path='/podcasts' element={<PodcastsPage />} />
-          <Route path='/podcast/:id' element={<PodcastDetailsPage />} />
-          <Route path='/podcast/:id/create-episode' element={<CreateEpisodePage />} />
-          <Route path='/:id/changePassword' element={<ChangePassword />} />
-          <Route path='/:id/editProfile' element={<EditProfile />} />
-        </Route>
-      </Routes>
+      <AnimatePresence mode='wait'>
+        <Routes location={location} key={location.pathname}>
+          <Route index path='/' element={<Home />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/signin' element={<SigninPage />} />
+          <Route path='/forgotPassword' element={<ForgotPassword />} />
+          <Route element={<PrivateRoute />}>
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/start-podcast' element={<StartPodcastPage />} />
+            <Route path='/podcasts' element={<PodcastsPage />} />
+            <Route path='/podcast/:id' element={<PodcastDetailsPage />} />
+            <Route path='/podcast/:id/create-episode' element={<CreateEpisodePage />} />
+            <Route path='/:id/changePassword' element={<ChangePassword />} />
+            <Route path='/:id/editProfile' element={<EditProfile />} />
+          </Route>
+        </Routes>
+      </AnimatePresence>
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { auth, db, storage } from '../../firebase';
 import { addDoc, collection } from 'firebase/firestore';
+import PageTransition from '../../PageTransition';
 
 function CreateEpisodePage() {
     const [title, setTitle] = useState('');
@@ -69,7 +70,7 @@ function CreateEpisodePage() {
     }
 
     return (
-        <>
+        <PageTransition>
             {
                 isLoading ?
                     <Loader />
@@ -107,7 +108,7 @@ function CreateEpisodePage() {
                         </div>
                     </>
             }
-        </>
+        </PageTransition>
     )
 }
 

@@ -15,6 +15,7 @@ import Loader from '../../components/common/Loading';
 import defaultDp from '../../Assets/defaultDp.jpg';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import DpInput from '../../components/common/Input/DpInput';
+import PageTransition from '../../PageTransition';
 
 
 function Signup() {
@@ -117,9 +118,7 @@ function Signup() {
 
             setIsLoading(false);
             toast.success('Signed-in!')
-            setTimeout(() => {
-                navigate('/profile')
-            }, 200)
+            navigate('/profile')
         }
         catch (error) {
             setIsLoading(false);
@@ -141,14 +140,14 @@ function Signup() {
                 name: user.displayName,
                 email: user.email,
                 uid: user.uid,
-                profile: user.photoURL+`?access_token=${accessToken}`
+                profile: user.photoURL + `?access_token=${accessToken}`
             });
 
             dispatch(setUser({
                 name: user.displayName,
                 email: user.email,
                 uid: user.uid,
-                profile: user.photoURL+`?access_token=${accessToken}`,
+                profile: user.photoURL + `?access_token=${accessToken}`,
             }))
             setIsLoading(false);
             toast.success('Signed-in!')
@@ -158,7 +157,7 @@ function Signup() {
             setIsLoading(false);
             const errorMessage = error?.message;
             toast.error(errorMessage);
-        };
+        }
     }
 
     function handleChange(file) {
@@ -171,7 +170,7 @@ function Signup() {
     }
 
     return (
-        <>
+        <PageTransition>
             {
                 isLoading ?
                     <Loader />
@@ -203,7 +202,7 @@ function Signup() {
                         </div>
                     </div>
             }
-        </>
+        </PageTransition>
     )
 }
 
