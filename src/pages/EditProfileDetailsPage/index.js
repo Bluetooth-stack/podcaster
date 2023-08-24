@@ -19,7 +19,7 @@ function EditProfile() {
   const [isLoading, setIsLoading] = useState(false);
   const [userName, setUserName] = useState(auth.currentUser.displayName);
   const [previewDp, setpreviewDp] = useState(auth.currentUser.photoURL ? auth.currentUser.photoURL : DefaultDp);
-  const [displayPic, setDisplayPic] = useState(null);
+  const [displayPic, setDisplayPic] = useState(auth.currentUser.photoURL);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [pass, setPass] = useState('');
 
