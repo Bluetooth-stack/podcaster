@@ -113,7 +113,7 @@ function PodcastDetailsPage() {
                                 {episodes.map((episode, indx) => (
                                     <EpisodeDetails
                                         key={indx}
-                                        image={podcastDetails.displayImage} title={(indx+1) +'. '+ episode.title}
+                                        image={podcastDetails.displayImage} title={episode.title}
                                         desc={episode.description} audioFile={episode.audioFile}
                                         onClickHandle={(file, title) => { setFile(file); setPlayingEpTitle(title) }}
                                     />
