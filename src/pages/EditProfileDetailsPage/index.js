@@ -27,7 +27,7 @@ function EditProfile() {
   const dispatch = useDispatch();
 
   async function handleConfirm() {
-    if (displayPic) {
+    if ((displayPic || userName) || (displayPic && userName)) {
       setIsLoading(true);
       try {
         const user = auth.currentUser;
