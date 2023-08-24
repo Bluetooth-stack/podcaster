@@ -38,6 +38,7 @@ function CreateEpisodePage() {
                 const audioUrl = await getDownloadURL(audioRef);
 
                 const episodeData = {
+                    createdAt: Date.now(),
                     title: title,
                     description: desc,
                     audioFile: audioUrl,
@@ -54,7 +55,7 @@ function CreateEpisodePage() {
 
             } catch (err) {
                 setIsLoading(false);
-                toast.error(err?.message.split('/')[1].split(')')[0])
+                toast.error(err?.message)
             }
         }
         else {

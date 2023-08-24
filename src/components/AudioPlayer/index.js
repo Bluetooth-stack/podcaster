@@ -46,7 +46,7 @@ function AudioPlayerComponent({ audioFile, picture, playingTitle }) {
             audioPlaying.removeEventListener('ended', handleEnded);
             audioPlaying.removeEventListener('loadedmetadata', handleLoadedMetaData);
         }
-    }, [])
+    }, [audioFile])
 
     function handeTimeUpdate() {
         setCurrentTime(player.current.currentTime);
@@ -54,6 +54,8 @@ function AudioPlayerComponent({ audioFile, picture, playingTitle }) {
 
     function handleLoadedMetaData() {
         setDuration(player.current.duration);
+        player.current.play();
+        setIsPlaying(true);
     }
 
     function handleEnded() {
@@ -109,7 +111,7 @@ function AudioPlayerComponent({ audioFile, picture, playingTitle }) {
                 <span style={{ cursor: 'pointer' }} onClick={handleBackward}>
                     <Replay5Icon />
                 </span>
-                
+
                 <span onClick={togglePlay} style={{ cursor: 'pointer' }}>
                     {
                         isPlaying ?
