@@ -67,7 +67,7 @@ function Navbar() {
 
     return (
         <section className='navbar'>
-            <div className='logoContainer'>
+            <div className='logoContainer' onClick={()=>{navigate('/')}}>
                 <h1><span>P</span><PlayCircleOutlineRoundedIcon className='logoIcon' /><span>dcasters</span></h1>
             </div>
             <div className='linkContainer'>
