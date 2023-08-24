@@ -1,6 +1,6 @@
 # Podcasters
 
-Its responsive a platform dedicated to the podcasters to have an online platform to create their profile and showcase their experience & knowledge in the form of audio podcasts over the world!
+Its a responsive platform dedicated to the podcasters to have an online platform to create their profile and showcase their experience & knowledge in the form of audio podcasts over the world!
 
 
 ## Features and Functionalities
