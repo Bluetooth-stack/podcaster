@@ -41,7 +41,7 @@ function App() {
                 name: userData.name,
                 email: userData.email,
                 uid: user.uid,
-                // profile: userData.profile
+                profile: userData.profile
               }))
             }
           },
